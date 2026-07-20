@@ -402,6 +402,29 @@ publisher-with-location-field:
     name: MIT Press
     location: Cambridge, MA
 
+publisher-formattable-verbatim:
+  type: Book
+  title: Publisher as Formattable Verbatim
+  publisher:
+    value: UN World Food Programme
+    verbatim: true
+
+publisher-formattable-braces:
+  type: Book
+  title: Publisher with Preserved Casing
+  publisher: "{imagiNary} Publishing"
+
+publisher-name-location-formattable:
+  type: Book
+  title: Publisher Name and Location as Formattable
+  publisher:
+    name:
+      value: Oxford University Press
+      short: OUP
+    location:
+      value: Oxford, United Kingdom
+      short: Oxford, UK
+
 # ----------------------------------------------------------------------------
 # NUMERIC/STRING FIELDS - Testing variations
 # ----------------------------------------------------------------------------

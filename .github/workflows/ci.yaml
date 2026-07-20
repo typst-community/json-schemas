@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Build and test schemas
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build schemas
+        run: bun scripts/build.js
+
+      - name: Validate schemas
+        run: bun ajv compile -s 'docs/*.schema.json' --spec=draft2020 --strict=true --all-errors -c ajv-formats
+
+      - name: Test schemas
+        run: bun scripts/test.js

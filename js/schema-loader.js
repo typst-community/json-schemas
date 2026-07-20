@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", initSchemaLoader);
 
 // Repository configuration
 const config = {
-  owner: "jassielof",
+  owner: "typst-community",
   repo: "json-schemas",
   path: "docs",
   fileExtension: ".schema.json",
-  baseUrl: "https://jassielof.github.io/json-schemas",
+  baseUrl: "https://typst-community.github.io/json-schemas",
 };
 
 // Schema version mapping
@@ -175,8 +175,7 @@ function createSchemaRow(file, schemaData) {
   // Schema name cell
   const nameCell = document.createElement("td");
   const nameTitle = document.createElement("strong");
-  nameTitle.textContent =
-    schemaData.title || file.name.replace(".schema.json", "");
+  nameTitle.textContent = schemaData.title || file.name.replace(".schema.json", "");
   const nameDetails = document.createElement("small");
   nameDetails.textContent = file.name;
   nameCell.appendChild(nameTitle);
@@ -185,8 +184,7 @@ function createSchemaRow(file, schemaData) {
 
   // Description cell
   const descriptionCell = document.createElement("td");
-  descriptionCell.textContent =
-    schemaData.description || "No description provided";
+  descriptionCell.textContent = schemaData.description || "No description provided";
 
   // Actions cell
   const actionsCell = document.createElement("td");

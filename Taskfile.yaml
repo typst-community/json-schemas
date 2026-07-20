@@ -5,36 +5,38 @@ tasks:
     cmd: bun scripts/build.js
     desc: Build JSON Schemas
     sources:
-      - docs/*.yaml
+      - schemas/*.yaml
     generates:
-      - docs/*.json
+      - docs/*.schema.json
   lint:
     deps:
       - build
-    cmd: bun ajv compile -s 'docs/*.schema.json' --spec=draft7 --strict-types -c ajv-formats
+    cmd: bun ajv compile -s 'docs/*.schema.json' --spec=draft2020 --strict-types -c ajv-formats
     sources:
-      - docs/*.json
+      - docs/*.schema.json
     generates:
-      - docs/*.json
+      - docs/*.schema.json
   validate:
     deps:
       - build
-    cmd: bun ajv compile -s 'docs/*.schema.json' --spec=draft7 --strict=true --all-errors -c ajv-formats
+    cmd: bun ajv compile -s 'docs/*.schema.json' --spec=draft2020 --strict=true --all-errors -c ajv-formats
     sources:
-      - docs/*.json
+      - docs/*.schema.json
     generates:
-      - docs/*.json
+      - docs/*.schema.json
   format:
     deps:
       - build
-    cmd: bun prettier --write 'docs/*'
+    cmd: bun prettier --write 'docs/*' 'schemas/*'
     sources:
       - docs/*
+      - schemas/*
     generates:
       - docs/*
+      - schemas/*
   test:
     deps:
       - build
     cmd: bun scripts/test.js
     sources:
-      - docs/*.json
+      - docs/*.schema.json

@@ -1,5 +1,6 @@
-$schema: http://json-schema.org/draft-07/schema#
-$id: https://jassielof.github.io/json-schemas/docs/hayagriva.schema.json
+# Draft 2020-12 is supported by Red Hat YAML Language Server as of v1.24.0, see https://github.com/redhat-developer/yaml-language-server.
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://typst-community.github.io/json-schemas/docs/hayagriva.schema.json
 title: Hayagriva Bibliography Format
 type: object
 description: |-
@@ -11,7 +12,7 @@ propertyNames:
   type: string
   minLength: 1 # Entry keys should not be empty
 additionalProperties:
-  $ref: "#/definitions/topLevelEntry"
+  $ref: "#/$defs/topLevelEntry"
 
 examples:
   - harry:
@@ -76,15 +77,15 @@ examples:
           archive: Landesmuseum Koblenz
           archive-location: Koblenz, Germany
 
-definitions:
+$defs:
   # Top-level entries must have a type field
   topLevelEntry:
     allOf:
-      - $ref: "#/definitions/entry"
+      - $ref: "#/$defs/entry"
       - type: object
         properties:
           type:
-            $ref: "#/definitions/entryType"
+            $ref: "#/$defs/entryType"
         required:
           - type
 
@@ -94,12 +95,12 @@ definitions:
     description: A single bibliography entry with fields describing a work.
     properties:
       type:
-        $ref: "#/definitions/entryType"
+        $ref: "#/$defs/entryType"
         title: Entry Type
         default: misc
 
       title:
-        $ref: "#/definitions/formattableString"
+        $ref: "#/$defs/formattableString"
         title: Title
         description: The title of this entry.
         examples:
@@ -109,17 +110,17 @@ definitions:
             verbatim: false
 
       author:
-        $ref: "#/definitions/personOrList"
+        $ref: "#/$defs/personOrList"
         title: Author
         description: The person or people primarily responsible for the creation of this entry.
 
       date:
-        $ref: "#/definitions/date"
+        $ref: "#/$defs/date"
         title: Date
         description: The date of publication or creation of this entry.
 
       parent:
-        $ref: "#/definitions/parentOrArray"
+        $ref: "#/$defs/parentOrArray"
         title: Parent Entry
         description: Entry in which the current entry was published, or to which it is strongly associated.
         examples:
@@ -130,14 +131,14 @@ definitions:
               - McCarthy, John
 
       abstract:
-        $ref: "#/definitions/formattableString"
+        $ref: "#/$defs/formattableString"
         title: Abstract
         description: The abstract or summary of the entry.
         examples:
           - The dominant sequence transduction models are based on complex...
 
       genre:
-        $ref: "#/definitions/formattableString"
+        $ref: "#/$defs/formattableString"
         title: Genre
         description: |-
           The type, class, or subtype of the item (e.g. "Doctoral dissertation" for a PhD thesis; "NIH Publication" for an NIH technical report).
@@ -146,29 +147,29 @@ definitions:
           - Doctoral dissertation
 
       editor:
-        $ref: "#/definitions/personOrList"
+        $ref: "#/$defs/personOrList"
         title: Editor
         description: The person or people responsible for selecting and revising the content of the entry.
 
       affiliated:
-        $ref: "#/definitions/affiliatedList"
+        $ref: "#/$defs/affiliatedList"
         title: Affiliated People
         description: People involved with the entry that do not fit `author` or `editor` roles.
 
       call-number:
-        $ref: "#/definitions/formattableString"
+        $ref: "#/$defs/formattableString"
         title: Call Number
         description: The number of the item in a library, institution, or collection. Use with the `archive` field.
         examples:
           - F16 D14
 
       publisher:
-        $ref: "#/definitions/publisher"
+        $ref: "#/$defs/publisher"
         title: Publisher
         description: The publisher of the item. Can include name and location.
 
       location:
-        $ref: "#/definitions/formattableString"
+        $ref: "#/$defs/formattableString"
         title: Location
         description: |-
           The location at which the entry is physically located or took place.
@@ -177,14 +178,14 @@ definitions:
           - Lahore, Pakistan
 
       organization:
-        $ref: "#/definitions/formattableString"
+        $ref: "#/$defs/formattableString"
         title: Organization
         description: The organization at/for which the entry was produced.
         examples:
           - Technische Universität Berlin
 
       issue:
-        $ref: "#/definitions/numericOrString"
+        $ref: "#/$defs/numericOrString"
         title: Issue
         description: |-
           For an entry whose parent has multiple issues, this field identifies to which specific issue the entry belongs.
@@ -193,7 +194,7 @@ definitions:
           - 5
 
       volume:
-        $ref: "#/definitions/numericOrString"
+        $ref: "#/$defs/numericOrString"
         title: Volume
         description: For an entry whose parent has multiple volumes, parts, seasons, etc., this field identifies to which specific volume the entry belongs.
         examples:
@@ -208,7 +209,7 @@ definitions:
           - 12
 
       chapter:
-        $ref: "#/definitions/numericOrString"
+        $ref: "#/$defs/numericOrString"
         title: Chapter
         description: |-
           The number of the chapter in the referenced work where this item can be found.
@@ -218,7 +219,7 @@ definitions:
           - "4"
 
       edition:
-        $ref: "#/definitions/numericOrString"
+        $ref: "#/$defs/numericOrString"
         title: Edition
         description: The published version of the entry.
         examples:
@@ -227,7 +228,7 @@ definitions:
           - 2
 
       page-range:
-        $ref: "#/definitions/numericOrString"
+        $ref: "#/$defs/numericOrString"
         title: Page Range
         description: The range of pages within the parent that this entry occupies.
         examples:
@@ -243,22 +244,22 @@ definitions:
           - 768
 
       time-range:
-        $ref: "#/definitions/timestampRange"
+        $ref: "#/$defs/timestampRange"
         title: Time Range
         description: The time range within the parent at which this entry starts and ends.
 
       runtime:
-        $ref: "#/definitions/timestamp"
+        $ref: "#/$defs/timestamp"
         title: Runtime
         description: The total runtime of the entry.
 
       url:
-        $ref: "#/definitions/url"
+        $ref: "#/$defs/url"
         title: URL
         description: The canonical public URL of the entry, which may include an access date.
 
       serial-number:
-        $ref: "#/definitions/serialNumber"
+        $ref: "#/$defs/serialNumber"
         title: Serial Number
         description: |-
           Any serial number, including article numbers, associated with the entry.
@@ -267,26 +268,26 @@ definitions:
           You can also include `serial` for the serial number when you provide other formats as well.
 
       language:
-        $ref: "#/definitions/language"
+        $ref: "#/$defs/language"
         title: Language
         description: The language of the entry as a Unicode Language Identifier.
 
       archive:
-        $ref: "#/definitions/formattableString"
+        $ref: "#/$defs/formattableString"
         title: Archive
         description: The name of the institution/collection where the entry is kept.
         examples:
           - National Library of New Zealand
 
       archive-location:
-        $ref: "#/definitions/formattableString"
+        $ref: "#/$defs/formattableString"
         title: Archive Location
         description: The location of the institution/collection where the entry is kept.
         examples:
           - Wellington, New Zealand
 
       note:
-        $ref: "#/definitions/formattableString"
+        $ref: "#/$defs/formattableString"
         title: Note
         description: A short markup, decoration, or annotation to the entry (e.g., to indicate items included in a review).
         examples:
@@ -296,29 +297,38 @@ definitions:
 
   publisher:
     title: Publisher
-    description: Publisher information - can be a simple string or an object with name and location.
+    description: |-
+      A publisher, possibly with a location.
+      The simplest scenario is a formattable string for the publisher name only.
+      You may also provide an object with `name` and optional `location`, both formattable strings.
     oneOf:
-      - type: string
-        minLength: 1
+      # Name only (formattable string): publisher: Penguin Books
+      - $ref: "#/$defs/formattableString"
+      # Name with optional location
       - type: object
         properties:
           name:
             title: Publisher Name
             description: The name of the publisher.
-            type: string
-            minLength: 1
+            $ref: "#/$defs/formattableString"
           location:
             title: Publisher Location
             description: The location of the publisher.
-            type: string
-            minLength: 1
+            $ref: "#/$defs/formattableString"
         required:
           - name
         additionalProperties: false
     examples:
       - Penguin Books
+      - "{imagiNary} Publishing"
+      - value: UN World Food Programme
+        verbatim: true
       - name: Penguin Books
-        location: London
+        location: London, UK
+      - name:
+          value: Oxford University Press
+          short: OUP
+        location: Oxford, UK
 
   entryType:
     # FIXME: Typst docs state the support for case-insensitivity, but as of Typst 0.14.0 only the first letter is case-insensitive, the rest must be lowercase.
@@ -369,10 +379,10 @@ definitions:
       Parent entry/entries. Can be a single parent or an array of parents.
       Multiple parents are useful when media is published in multiple ways.
     oneOf:
-      - $ref: "#/definitions/entry"
+      - $ref: "#/$defs/entry"
       - type: array
         items:
-          $ref: "#/definitions/entry"
+          $ref: "#/$defs/entry"
         minItems: 1
         uniqueItems: true
 
@@ -386,11 +396,11 @@ definitions:
       type: object
       properties:
         role:
-          $ref: "#/definitions/roleType"
+          $ref: "#/$defs/roleType"
           title: Role
           description: The role of the person or people in relation to the entry.
         names:
-          $ref: "#/definitions/personOrList"
+          $ref: "#/$defs/personOrList"
           title: People Involved
           description: The name(s) of the person or people involved in the role.
       required:
@@ -461,7 +471,7 @@ definitions:
             type: string
             minLength: 1 # Added: Short form should not be empty
         # Note: verbatim and short only make sense when value is present
-        dependencies:
+        dependentRequired:
           verbatim:
             - value
           short:
@@ -533,10 +543,10 @@ definitions:
     title: Person or List of Persons
     description: A single person or an array of persons.
     oneOf:
-      - $ref: "#/definitions/person"
+      - $ref: "#/$defs/person"
       - type: array
         items:
-          $ref: "#/definitions/person"
+          $ref: "#/$defs/person"
         minItems: 1 # Added: If array, must have at least one person
         uniqueItems: true
 
@@ -626,7 +636,7 @@ definitions:
             format: uri
             minLength: 1
           date:
-            $ref: "#/definitions/date"
+            $ref: "#/$defs/date"
             title: Access Date
             description: The date when the URL was accessed.
         required:

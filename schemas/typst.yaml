@@ -1,9 +1,10 @@
-$schema: http://json-schema.org/draft-07/schema#
-$id: https://jassielof.github.io/json-schemas/docs/typst.schema.json
+# Support for Draft 2020-12 JSON Schema is possible thanks to Tombi (https://github.com/tombi-toml/tombi v1.2.0).
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://typst-community.github.io/json-schemas/docs/typst.schema.json
 title: Typst Package Manifest
 description: |-
   (Community) Schema for typst.toml package manifest files, used by the Typst package manager and universe.
-  https://github.com/typst/packages/blob/main/docs/manifest.md
+  See [Manifest Documentation](https://github.com/typst/packages/blob/main/docs/manifest.md).
 type: object
 required:
   - package

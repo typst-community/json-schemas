@@ -40,7 +40,7 @@ schemas.forEach((schema) => {
         fs.writeFileSync(tempFile, JSON.stringify(data, null, 2));
 
         try {
-          execSync(`bun ajv test -s ${schema} -d ${tempFile} --valid --spec=draft7 -c ajv-formats`, {
+          execSync(`bun ajv test -s ${schema} -d ${tempFile} --valid --spec=draft2020 -c ajv-formats`, {
             stdio: "inherit",
           });
           console.log(`  ✓ ${path.basename(file)}`);
@@ -64,7 +64,7 @@ schemas.forEach((schema) => {
         fs.writeFileSync(tempFile, JSON.stringify(data, null, 2));
 
         try {
-          execSync(`bun ajv test -s ${schema} -d ${tempFile} --invalid --spec=draft7 -c ajv-formats`, {
+          execSync(`bun ajv test -s ${schema} -d ${tempFile} --invalid --spec=draft2020 -c ajv-formats`, {
             stdio: "inherit",
           });
           console.log(`  ✓ ${path.basename(file)} (correctly invalid)`);

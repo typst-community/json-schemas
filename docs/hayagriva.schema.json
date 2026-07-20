@@ -1,6 +1,6 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://jassielof.github.io/json-schemas/docs/hayagriva.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://typst-community.github.io/json-schemas/docs/hayagriva.schema.json",
   "title": "Hayagriva Bibliography Format",
   "type": "object",
   "description": "(Community) Schema for Hayagriva YAML bibliography files, a bibliography management format for the modern age.\nhttps://github.com/typst/hayagriva/blob/main/docs/file-format.md",
@@ -9,7 +9,7 @@
     "minLength": 1
   },
   "additionalProperties": {
-    "$ref": "#/definitions/topLevelEntry"
+    "$ref": "#/$defs/topLevelEntry"
   },
   "examples": [
     {
@@ -35,7 +35,11 @@
       "kinetics": {
         "type": "Article",
         "title": "Kinetics and luminescence of the excitations of a nonequilibrium polariton condensate",
-        "author": ["Doan, T. D.", "Tran Thoai, D. B.", "Haug, Hartmut"],
+        "author": [
+          "Doan, T. D.",
+          "Tran Thoai, D. B.",
+          "Haug, Hartmut"
+        ],
         "serial-number": {
           "doi": "10.1103/PhysRevB.102.165126"
         },
@@ -53,7 +57,10 @@
     {
       "wwdc-network": {
         "type": "Article",
-        "author": ["Mehta, Jiten", "Kinnear, Eric"],
+        "author": [
+          "Mehta, Jiten",
+          "Kinnear, Eric"
+        ],
         "title": "Boost Performance and Security with Modern Networking",
         "date": "2020-06-26",
         "parent": [
@@ -94,20 +101,22 @@
       }
     }
   ],
-  "definitions": {
+  "$defs": {
     "topLevelEntry": {
       "allOf": [
         {
-          "$ref": "#/definitions/entry"
+          "$ref": "#/$defs/entry"
         },
         {
           "type": "object",
           "properties": {
             "type": {
-              "$ref": "#/definitions/entryType"
+              "$ref": "#/$defs/entryType"
             }
           },
-          "required": ["type"]
+          "required": [
+            "type"
+          ]
         }
       ]
     },
@@ -117,12 +126,12 @@
       "description": "A single bibliography entry with fields describing a work.",
       "properties": {
         "type": {
-          "$ref": "#/definitions/entryType",
+          "$ref": "#/$defs/entryType",
           "title": "Entry Type",
           "default": "misc"
         },
         "title": {
-          "$ref": "#/definitions/formattableString",
+          "$ref": "#/$defs/formattableString",
           "title": "Title",
           "description": "The title of this entry.",
           "examples": [
@@ -135,169 +144,204 @@
           ]
         },
         "author": {
-          "$ref": "#/definitions/personOrList",
+          "$ref": "#/$defs/personOrList",
           "title": "Author",
           "description": "The person or people primarily responsible for the creation of this entry."
         },
         "date": {
-          "$ref": "#/definitions/date",
+          "$ref": "#/$defs/date",
           "title": "Date",
           "description": "The date of publication or creation of this entry."
         },
         "parent": {
-          "$ref": "#/definitions/parentOrArray",
+          "$ref": "#/$defs/parentOrArray",
           "title": "Parent Entry",
           "description": "Entry in which the current entry was published, or to which it is strongly associated.",
           "examples": [
             {
               "type": "Anthology",
               "title": "Automata studies",
-              "editor": ["Shannon, Claude E.", "McCarthy, John"]
+              "editor": [
+                "Shannon, Claude E.",
+                "McCarthy, John"
+              ]
             }
           ]
         },
         "abstract": {
-          "$ref": "#/definitions/formattableString",
+          "$ref": "#/$defs/formattableString",
           "title": "Abstract",
           "description": "The abstract or summary of the entry.",
-          "examples": ["The dominant sequence transduction models are based on complex..."]
+          "examples": [
+            "The dominant sequence transduction models are based on complex..."
+          ]
         },
         "genre": {
-          "$ref": "#/definitions/formattableString",
+          "$ref": "#/$defs/formattableString",
           "title": "Genre",
           "description": "The type, class, or subtype of the item (e.g. \"Doctoral dissertation\" for a PhD thesis; \"NIH Publication\" for an NIH technical report).\nDo not use for topical descriptions or categories (e.g. \"adventure\" for an adventure movie).",
-          "examples": ["Doctoral dissertation"]
+          "examples": [
+            "Doctoral dissertation"
+          ]
         },
         "editor": {
-          "$ref": "#/definitions/personOrList",
+          "$ref": "#/$defs/personOrList",
           "title": "Editor",
           "description": "The person or people responsible for selecting and revising the content of the entry."
         },
         "affiliated": {
-          "$ref": "#/definitions/affiliatedList",
+          "$ref": "#/$defs/affiliatedList",
           "title": "Affiliated People",
           "description": "People involved with the entry that do not fit `author` or `editor` roles."
         },
         "call-number": {
-          "$ref": "#/definitions/formattableString",
+          "$ref": "#/$defs/formattableString",
           "title": "Call Number",
           "description": "The number of the item in a library, institution, or collection. Use with the `archive` field.",
-          "examples": ["F16 D14"]
+          "examples": [
+            "F16 D14"
+          ]
         },
         "publisher": {
-          "$ref": "#/definitions/publisher",
+          "$ref": "#/$defs/publisher",
           "title": "Publisher",
           "description": "The publisher of the item. Can include name and location."
         },
         "location": {
-          "$ref": "#/definitions/formattableString",
+          "$ref": "#/$defs/formattableString",
           "title": "Location",
           "description": "The location at which the entry is physically located or took place.\nFor the location where an item was published, use the `publisher` field instead.",
-          "examples": ["Lahore, Pakistan"]
+          "examples": [
+            "Lahore, Pakistan"
+          ]
         },
         "organization": {
-          "$ref": "#/definitions/formattableString",
+          "$ref": "#/$defs/formattableString",
           "title": "Organization",
           "description": "The organization at/for which the entry was produced.",
-          "examples": ["Technische Universität Berlin"]
+          "examples": [
+            "Technische Universität Berlin"
+          ]
         },
         "issue": {
-          "$ref": "#/definitions/numericOrString",
+          "$ref": "#/$defs/numericOrString",
           "title": "Issue",
           "description": "For an entry whose parent has multiple issues, this field identifies to which specific issue the entry belongs.\nAlso used to indicate the episode number for TV series.",
-          "examples": [5]
+          "examples": [
+            5
+          ]
         },
         "volume": {
-          "$ref": "#/definitions/numericOrString",
+          "$ref": "#/$defs/numericOrString",
           "title": "Volume",
           "description": "For an entry whose parent has multiple volumes, parts, seasons, etc., this field identifies to which specific volume the entry belongs.",
-          "examples": ["2-3"]
+          "examples": [
+            "2-3"
+          ]
         },
         "volume-total": {
           "title": "Volume Total",
           "description": "The total number of volumes, parts, seasons, etc., in the series that contains this entry.",
           "type": "integer",
           "minimum": 1,
-          "examples": [12]
+          "examples": [
+            12
+          ]
         },
         "chapter": {
-          "$ref": "#/definitions/numericOrString",
+          "$ref": "#/$defs/numericOrString",
           "title": "Chapter",
           "description": "The number of the chapter in the referenced work where this item can be found.\nWhen the chapter itself is the item being cited (common if it has its own non-numeric title),\nprefer using `type: chapter` for the entry while specifying the containing work's data as its parent.",
-          "examples": ["4"]
+          "examples": [
+            "4"
+          ]
         },
         "edition": {
-          "$ref": "#/definitions/numericOrString",
+          "$ref": "#/$defs/numericOrString",
           "title": "Edition",
           "description": "The published version of the entry.",
-          "examples": ["expanded and revised edition", "second", 2]
+          "examples": [
+            "expanded and revised edition",
+            "second",
+            2
+          ]
         },
         "page-range": {
-          "$ref": "#/definitions/numericOrString",
+          "$ref": "#/$defs/numericOrString",
           "title": "Page Range",
           "description": "The range of pages within the parent that this entry occupies.",
-          "examples": ["812-847", "S10-15"]
+          "examples": [
+            "812-847",
+            "S10-15"
+          ]
         },
         "page-total": {
           "title": "Page Total",
           "description": "The total number of pages in the entry.",
           "type": "integer",
           "minimum": 1,
-          "examples": [768]
+          "examples": [
+            768
+          ]
         },
         "time-range": {
-          "$ref": "#/definitions/timestampRange",
+          "$ref": "#/$defs/timestampRange",
           "title": "Time Range",
           "description": "The time range within the parent at which this entry starts and ends."
         },
         "runtime": {
-          "$ref": "#/definitions/timestamp",
+          "$ref": "#/$defs/timestamp",
           "title": "Runtime",
           "description": "The total runtime of the entry."
         },
         "url": {
-          "$ref": "#/definitions/url",
+          "$ref": "#/$defs/url",
           "title": "URL",
           "description": "The canonical public URL of the entry, which may include an access date."
         },
         "serial-number": {
-          "$ref": "#/definitions/serialNumber",
+          "$ref": "#/$defs/serialNumber",
           "title": "Serial Number",
           "description": "Any serial number, including article numbers, associated with the entry.\nIf you have serial numbers of well-known schemes like `doi`, you should put them into the serial number as a dictionary.\nHayagriva will recognize and specially treat `doi`, `isbn`, `issn`, `pmid`, `pmcid`, and `arxiv`.\nYou can also include `serial` for the serial number when you provide other formats as well."
         },
         "language": {
-          "$ref": "#/definitions/language",
+          "$ref": "#/$defs/language",
           "title": "Language",
           "description": "The language of the entry as a Unicode Language Identifier."
         },
         "archive": {
-          "$ref": "#/definitions/formattableString",
+          "$ref": "#/$defs/formattableString",
           "title": "Archive",
           "description": "The name of the institution/collection where the entry is kept.",
-          "examples": ["National Library of New Zealand"]
+          "examples": [
+            "National Library of New Zealand"
+          ]
         },
         "archive-location": {
-          "$ref": "#/definitions/formattableString",
+          "$ref": "#/$defs/formattableString",
           "title": "Archive Location",
           "description": "The location of the institution/collection where the entry is kept.",
-          "examples": ["Wellington, New Zealand"]
+          "examples": [
+            "Wellington, New Zealand"
+          ]
         },
         "note": {
-          "$ref": "#/definitions/formattableString",
+          "$ref": "#/$defs/formattableString",
           "title": "Note",
           "description": "A short markup, decoration, or annotation to the entry (e.g., to indicate items included in a review).",
-          "examples": ["microfilm version"]
+          "examples": [
+            "microfilm version"
+          ]
         }
       },
       "additionalProperties": false
     },
     "publisher": {
       "title": "Publisher",
-      "description": "Publisher information - can be a simple string or an object with name and location.",
+      "description": "A publisher, possibly with a location.\nThe simplest scenario is a formattable string for the publisher name only.\nYou may also provide an object with `name` and optional `location`, both formattable strings.",
       "oneOf": [
         {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/formattableString"
         },
         {
           "type": "object",
@@ -305,25 +349,37 @@
             "name": {
               "title": "Publisher Name",
               "description": "The name of the publisher.",
-              "type": "string",
-              "minLength": 1
+              "$ref": "#/$defs/formattableString"
             },
             "location": {
               "title": "Publisher Location",
               "description": "The location of the publisher.",
-              "type": "string",
-              "minLength": 1
+              "$ref": "#/$defs/formattableString"
             }
           },
-          "required": ["name"],
+          "required": [
+            "name"
+          ],
           "additionalProperties": false
         }
       ],
       "examples": [
         "Penguin Books",
+        "{imagiNary} Publishing",
+        {
+          "value": "UN World Food Programme",
+          "verbatim": true
+        },
         {
           "name": "Penguin Books",
-          "location": "London"
+          "location": "London, UK"
+        },
+        {
+          "name": {
+            "value": "Oxford University Press",
+            "short": "OUP"
+          },
+          "location": "Oxford, UK"
         }
       ]
     },
@@ -371,12 +427,12 @@
       "description": "Parent entry/entries. Can be a single parent or an array of parents.\nMultiple parents are useful when media is published in multiple ways.",
       "oneOf": [
         {
-          "$ref": "#/definitions/entry"
+          "$ref": "#/$defs/entry"
         },
         {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/entry"
+            "$ref": "#/$defs/entry"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -392,17 +448,20 @@
         "type": "object",
         "properties": {
           "role": {
-            "$ref": "#/definitions/roleType",
+            "$ref": "#/$defs/roleType",
             "title": "Role",
             "description": "The role of the person or people in relation to the entry."
           },
           "names": {
-            "$ref": "#/definitions/personOrList",
+            "$ref": "#/$defs/personOrList",
             "title": "People Involved",
             "description": "The name(s) of the person or people involved in the role."
           }
         },
-        "required": ["role", "names"],
+        "required": [
+          "role",
+          "names"
+        ],
         "additionalProperties": false
       },
       "minItems": 1,
@@ -415,7 +474,11 @@
           },
           {
             "role": "cast-member",
-            "names": ["Schwarzenegger, Arnold", "Hamilton, Linda", "Patrick, Robert"]
+            "names": [
+              "Schwarzenegger, Arnold",
+              "Hamilton, Linda",
+              "Patrick, Robert"
+            ]
           }
         ]
       ]
@@ -476,11 +539,17 @@
               "minLength": 1
             }
           },
-          "dependencies": {
-            "verbatim": ["value"],
-            "short": ["value"]
+          "dependentRequired": {
+            "verbatim": [
+              "value"
+            ],
+            "short": [
+              "value"
+            ]
           },
-          "required": ["value"],
+          "required": [
+            "value"
+          ],
           "additionalProperties": false
         }
       ],
@@ -504,7 +573,12 @@
         {
           "type": "string",
           "minLength": 1,
-          "examples": ["Doe, Janet", "Luther King, Martin, Jr.", "UNICEF", "von der Leyen, Ursula"]
+          "examples": [
+            "Doe, Janet",
+            "Luther King, Martin, Jr.",
+            "UNICEF",
+            "von der Leyen, Ursula"
+          ]
         },
         {
           "type": "object",
@@ -540,7 +614,9 @@
               "minLength": 1
             }
           },
-          "required": ["name"],
+          "required": [
+            "name"
+          ],
           "additionalProperties": false,
           "examples": [
             {
@@ -562,12 +638,12 @@
       "description": "A single person or an array of persons.",
       "oneOf": [
         {
-          "$ref": "#/definitions/person"
+          "$ref": "#/$defs/person"
         },
         {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/person"
+            "$ref": "#/$defs/person"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -577,7 +653,12 @@
     "date": {
       "title": "Date",
       "description": "A calendar date in ISO 8601 format (YYYY-MM-DD, YYYY-MM, or YYYY).\nCan include sign prefix for years before 0000 (e.g., -0001 for 2 B.C.E.).\nYear 1 B.C.E. is represented as 0000.",
-      "examples": [2025, "2025-12-31", "2025-12", "-0001"],
+      "examples": [
+        2025,
+        "2025-12-31",
+        "2025-12",
+        "-0001"
+      ],
       "anyOf": [
         {
           "type": "integer",
@@ -639,7 +720,9 @@
         {
           "type": "string",
           "format": "uri",
-          "examples": ["https://typst.app/"],
+          "examples": [
+            "https://typst.app/"
+          ],
           "minLength": 1
         },
         {
@@ -659,12 +742,14 @@
               "minLength": 1
             },
             "date": {
-              "$ref": "#/definitions/date",
+              "$ref": "#/$defs/date",
               "title": "Access Date",
               "description": "The date when the URL was accessed."
             }
           },
-          "required": ["value"],
+          "required": [
+            "value"
+          ],
           "additionalProperties": false
         }
       ]
@@ -676,11 +761,15 @@
         {
           "type": "string",
           "minLength": 1,
-          "examples": ["2003.13722"]
+          "examples": [
+            "2003.13722"
+          ]
         },
         {
           "type": "number",
-          "examples": [2003.13722]
+          "examples": [
+            2003.13722
+          ]
         },
         {
           "type": "object",

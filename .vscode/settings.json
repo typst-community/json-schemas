@@ -1,15 +1,15 @@
 {
-  "cSpell.words": ["hayagriva", "Hayagriva"],
+  "cSpell.words": ["hayagriva", "Hayagriva", "Tombi"],
   "explorer.fileNesting.patterns": {
     "*.schema.json": "${capture}.yaml,${capture}.yml"
   },
   "json.schemas": [
     {
       "fileMatch": ["docs/*.schema.json"],
-      "url": "http://json-schema.org/draft-07/schema#"
+      "url": "https://json-schema.org/draft/2020-12/schema"
     }
   ],
   "yaml.schemas": {
-    "https://json-schema.org/draft-07/schema#": "docs/*.yaml"
+    "https://json-schema.org/draft/2020-12/schema": "schemas/*.yaml"
   }
 }
