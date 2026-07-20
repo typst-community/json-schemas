@@ -4,44 +4,29 @@
   "title": "Typst Package Manifest",
   "description": "(Community) Schema for typst.toml package manifest files, used by the Typst package manager and universe.\nSee [Manifest Documentation](https://github.com/typst/packages/blob/main/docs/manifest.md).",
   "type": "object",
-  "required": [
-    "package"
-  ],
+  "required": ["package"],
   "properties": {
     "package": {
       "type": "object",
       "description": "Contains metadata about the package.",
-      "required": [
-        "name",
-        "version",
-        "entrypoint"
-      ],
+      "required": ["name", "version", "entrypoint"],
       "properties": {
         "name": {
           "type": "string",
           "description": "The package's identifier in its namespace.\nSee [Naming rules](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules).",
           "pattern": "^[a-z\\d]+(-[a-z\\d]+)*$",
-          "examples": [
-            "my-package",
-            "example-template"
-          ]
+          "examples": ["my-package", "example-template"]
         },
         "version": {
           "type": "string",
           "description": "The package's version as a full major-minor-patch triple (following SemVer, no pre-release or build tags).\nSee [SemVer](https://semver.org/).",
           "pattern": "^\\d+\\.\\d+\\.\\d+$",
-          "examples": [
-            "1.0.0",
-            "0.2.1"
-          ]
+          "examples": ["1.0.0", "0.2.1"]
         },
         "entrypoint": {
           "type": "string",
           "description": "The path to the main Typst file (relative to the package root) that is evaluated when the package is imported.",
-          "examples": [
-            "lib.typ",
-            "src/main.typ"
-          ]
+          "examples": ["lib.typ", "src/main.typ"]
         },
         "authors": {
           "type": "array",
@@ -52,13 +37,8 @@
           },
           "minItems": 1,
           "examples": [
-            [
-              "Jane Doe <jane.doe@example.com>",
-              "John Doe <@johndoe>"
-            ],
-            [
-              "Typst GmbH <https://typst.app>"
-            ]
+            ["Jane Doe <jane.doe@example.com>", "John Doe <@johndoe>"],
+            ["Typst GmbH <https://typst.app>"]
           ]
         },
         "license": {
@@ -86,17 +66,13 @@
           "type": "string",
           "description": "A link to the package's web presence, where there could be more details, an issue tracker, or something else. Will be linked to from the package list. If there is no dedicated web page for the package, don't link to its repository here. Omit this field and prefer `repository`.",
           "format": "uri",
-          "examples": [
-            "https://example.com/my-package-docs"
-          ]
+          "examples": ["https://example.com/my-package-docs"]
         },
         "repository": {
           "type": "string",
           "description": "A link to the repository where this package is developed. Will be linked to from Typst Universe if there is no homepage.",
           "format": "uri",
-          "examples": [
-            "https://github.com/user/my-package"
-          ]
+          "examples": ["https://github.com/user/my-package"]
         },
         "keywords": {
           "type": "array",
@@ -108,16 +84,8 @@
           "minItems": 1,
           "uniqueItems": true,
           "examples": [
-            [
-              "chart",
-              "plot",
-              "data visualization"
-            ],
-            [
-              "ieee",
-              "template",
-              "paper"
-            ]
+            ["chart", "plot", "data visualization"],
+            ["ieee", "template", "paper"]
           ]
         },
         "categories": {
@@ -151,14 +119,8 @@
           "maxItems": 3,
           "uniqueItems": true,
           "examples": [
-            [
-              "visualization",
-              "components"
-            ],
-            [
-              "paper",
-              "layout"
-            ]
+            ["visualization", "components"],
+            ["paper", "layout"]
           ]
         },
         "disciplines": {
@@ -206,27 +168,13 @@
             ]
           },
           "uniqueItems": true,
-          "examples": [
-            [
-              "computer-science",
-              "mathematics"
-            ],
-            [
-              "physics"
-            ],
-            []
-          ]
+          "examples": [["computer-science", "mathematics"], ["physics"], []]
         },
         "compiler": {
           "type": "string",
           "description": "The minimum Typst compiler version required for this package to work (SemVer format).\nPartial versions like '0' or '0.13' are supported. Pre-release tags are not supported.",
           "pattern": "^(0|[1-9]\\d*)(\\.(0|[1-9]\\d*)){0,2}$",
-          "examples": [
-            "0",
-            "0.13",
-            "0.8.0",
-            "1.0.0"
-          ]
+          "examples": ["0", "0.13", "0.8.0", "1.0.0"]
         },
         "exclude": {
           "type": "array",
@@ -236,13 +184,7 @@
             "minLength": 1
           },
           "uniqueItems": true,
-          "examples": [
-            [
-              "docs/",
-              "*.pdf",
-              "images/draft*.png"
-            ]
-          ]
+          "examples": [["docs/", "*.pdf", "images/draft*.png"]]
         }
       },
       "examples": [
@@ -250,9 +192,7 @@
           "name": "example",
           "version": "0.1.0",
           "entrypoint": "lib.typ",
-          "authors": [
-            "The Typst Project Developers"
-          ],
+          "authors": ["The Typst Project Developers"],
           "license": "MIT",
           "description": "Calculate elementary arithmetic with functions."
         }
@@ -262,39 +202,26 @@
     "template": {
       "type": "object",
       "description": "If present, declares this package as a template.\nTemplate packages must specify at least one category.",
-      "required": [
-        "path",
-        "entrypoint",
-        "thumbnail"
-      ],
+      "required": ["path", "entrypoint", "thumbnail"],
       "properties": {
         "path": {
           "type": "string",
           "description": "The directory within the package (relative to package root) containing files to be copied into the user's new project directory.",
           "minLength": 1,
-          "examples": [
-            "template",
-            "skeleton"
-          ]
+          "examples": ["template", "skeleton"]
         },
         "entrypoint": {
           "type": "string",
           "description": "Path relative to the template 'path' directory pointing to the main file to be compiled after initialization.\nThis file will become the previewed file in the Typst web application.",
           "minLength": 1,
           "pattern": ".*\\.typ$",
-          "examples": [
-            "main.typ",
-            "report.typ"
-          ]
+          "examples": ["main.typ", "report.typ"]
         },
         "thumbnail": {
           "type": "string",
           "description": "Path relative to the package root pointing to a PNG or lossless WebP thumbnail.\nRequirements: min 1080px on longer edge, max 3 MiB file size.\n_The thumbnail will automatically be excluded from the package files._",
           "pattern": "^.*\\.(png|webp)$",
-          "examples": [
-            "thumbnail.png",
-            "preview.webp"
-          ]
+          "examples": ["thumbnail.png", "preview.webp"]
         }
       },
       "additionalProperties": false
@@ -327,17 +254,13 @@
             "type": "object"
           }
         },
-        "required": [
-          "template"
-        ]
+        "required": ["template"]
       },
       "then": {
         "properties": {
           "package": {
             "type": "object",
-            "required": [
-              "categories"
-            ],
+            "required": ["categories"],
             "properties": {
               "categories": {
                 "type": "array",
