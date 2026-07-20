@@ -2,7 +2,7 @@
   "name": "json-schemas",
   "private": true,
   "scripts": {
-    "test": "bun run build && bun scripts/test.js"
+    "test": "bun run scripts/build.js && bun scripts/test.js"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
