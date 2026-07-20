@@ -10,7 +10,7 @@
     "ajv-formats": "^3.0.1",
     "glob": "^13.0.6",
     "prettier": "^3.7.4",
-    "smol-toml": "^1.6.0",
+    "smol-toml": "^1.7.0",
     "yaml": "^2.9.0"
   }
 }
