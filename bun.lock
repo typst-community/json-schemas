@@ -4,13 +4,13 @@
   "workspaces": {
     "": {
       "devDependencies": {
-        "ajv": "latest",
-        "ajv-cli": "latest",
-        "ajv-formats": "latest",
-        "glob": "latest",
-        "prettier": "latest",
-        "smol-toml": "latest",
-        "yaml": "latest",
+        "ajv": "^8.17.1",
+        "ajv-cli": "^5.0.0",
+        "ajv-formats": "^3.0.1",
+        "glob": "^13.0.0",
+        "prettier": "^3.7.4",
+        "smol-toml": "^1.6.0",
+        "yaml": "^2.8.2",
       },
     },
   },
