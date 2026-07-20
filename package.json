@@ -5,12 +5,12 @@
     "test": "bun run scripts/build.js && bun scripts/test.js"
   },
   "devDependencies": {
-    "ajv": "^8.17.1",
+    "ajv": "^8.20.0",
     "ajv-cli": "^5.0.0",
     "ajv-formats": "^3.0.1",
     "glob": "^13.0.6",
-    "prettier": "^3.7.4",
-    "smol-toml": "^1.6.0",
+    "prettier": "^3.9.5",
+    "smol-toml": "^1.7.0",
     "yaml": "^2.9.0"
   }
 }
