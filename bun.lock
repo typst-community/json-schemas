@@ -4,13 +4,13 @@
   "workspaces": {
     "": {
       "devDependencies": {
-        "ajv": "latest",
-        "ajv-cli": "latest",
-        "ajv-formats": "latest",
-        "glob": "latest",
-        "prettier": "latest",
-        "smol-toml": "latest",
-        "yaml": "latest",
+        "ajv": "^8.20.0",
+        "ajv-cli": "^5.0.0",
+        "ajv-formats": "^3.0.1",
+        "glob": "^13.0.6",
+        "prettier": "^3.9.5",
+        "smol-toml": "^1.7.1",
+        "yaml": "^2.9.0",
       },
     },
   },
@@ -71,7 +71,7 @@
 
     "require-from-string": ["require-from-string@2.0.2", "", {}, "sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw=="],
 
-    "smol-toml": ["smol-toml@1.7.0", "", {}, "sha512-aqVvWoyO21L23mb+drl4RmMXbf6N7FdHjAhTRA9ZBL7apWBgfWC16KjrASI+1p9GAroljyMHj6fK67i0UiTNvQ=="],
+    "smol-toml": ["smol-toml@1.7.1", "", {}, "sha512-PPlsspAZ4jbMBu5DMFhfUGDQLu/vrL4SyBROVS37x8ynnVmFIs1VPBz1Co8Xks3TvpIaZXmU85y4DrQ+UyVFoQ=="],
 
     "sprintf-js": ["sprintf-js@1.0.3", "", {}, "sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g=="],
 
