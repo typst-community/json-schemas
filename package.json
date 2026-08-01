@@ -9,7 +9,7 @@
     "ajv-cli": "^5.0.0",
     "ajv-formats": "^3.0.1",
     "glob": "^13.0.6",
-    "prettier": "^3.9.5",
+    "prettier": "^3.9.6",
     "smol-toml": "^1.7.0",
     "yaml": "^2.9.0"
   }
